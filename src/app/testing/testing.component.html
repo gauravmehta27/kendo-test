@@ -1,0 +1,11 @@
+<form [formGroup]="form" (ngSubmit)="submit(form.value)">
+  <kendo-dropdownlist [data]="data" formControlName="dropdown1">
+  </kendo-dropdownlist>
+  <kendo-dropdownlist [data]="data" formControlName="dropdown2">
+  </kendo-dropdownlist>
+  <input type="text" formControlName="text" />
+  <div *ngIf="showErrors && form?.controls?.text?.invalid" class="errorMessage">
+    error
+  </div>
+  <input type="submit" value="submit" />
+</form>
