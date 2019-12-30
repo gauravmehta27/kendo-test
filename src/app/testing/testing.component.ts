@@ -34,6 +34,13 @@ export class TestingComponent implements OnInit {
       this.data = res.dropdown1;
     });
     this.showErrors = false;
+    this.testingService.getData().subscribe((res: any) => {
+      this.form.patchValue({
+        dropdown1: "",
+        dropdown2: "",
+        text: ""
+      });
+    });
   }
 
   submit(data) {
