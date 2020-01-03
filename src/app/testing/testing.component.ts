@@ -14,16 +14,30 @@ import {
   styleUrls: ["./testing.component.css"]
 })
 export class TestingComponent implements OnInit {
+  private baseImageUrl: string =
+    "https://demos.telerik.com/kendo-ui/content/web/panelbar/";
+
   data: any;
   form: FormGroup;
   showErrors: boolean;
+  testVariable: string;
+  simpleVariable: any;
+  isRed: boolean;
 
+  private imageUrl(imageName: string): string {
+    return this.baseImageUrl + imageName + ".jpg";
+  }
   constructor(
     private testingService: TestingService,
     private formBuilder: FormBuilder
   ) {}
 
   ngOnInit() {
+    this.isRed = false;
+    this.testingService.testVar$.subscribe(res => {
+      this.testVariable = res;
+    });
+    this.simpleVariable = this.testingService.simpleVar;
     this.form = this.formBuilder.group({
       dropdown1: ["", Validators.compose([Validators.required])],
       dropdown2: ["", [Validators.required]],
@@ -50,5 +64,9 @@ export class TestingComponent implements OnInit {
     }
     this.showErrors = false;
     console.log(data);
+  }
+
+  isTextClicked() {
+    this.isRed = true;
   }
 }

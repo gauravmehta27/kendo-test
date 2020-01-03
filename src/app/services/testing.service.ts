@@ -3,11 +3,18 @@ import { Injectable } from "@angular/core";
 
 // import of other dependencies
 import { MainService } from "./main.service";
+import { BehaviorSubject } from "rxjs";
 
 @Injectable()
 export class TestingService {
-  constructor(private mainService: MainService) {}
-
+  simpleVar = "Simple Variable";
+  constructor(private mainService: MainService) {
+    if (sessionStorage.dummy) {
+      this.changeTest(sessionStorage.dummy);
+    }
+  }
+  private testVar = new BehaviorSubject("");
+  testVar$ = this.testVar.asObservable();
   getDropdown() {
     return this.mainService.getFileResp("/assets/data/data.json");
   }
@@ -25,5 +32,9 @@ export class TestingService {
   //function to update via patch call
   updateData(data) {
     return this.mainService.patch("endpoint-url", data);
+  }
+
+  changeTest(val) {
+    this.testVar.next(val);
   }
 }

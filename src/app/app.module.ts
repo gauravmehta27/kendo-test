@@ -11,6 +11,8 @@ import { HttpClientModule } from "@angular/common/http";
 import { TestingComponent } from "./testing/testing.component";
 import { TestingService } from "./services/testing.service";
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
+import { LayoutModule } from "@progress/kendo-angular-layout";
+import { PanelBarModule } from "@progress/kendo-angular-layout";
 
 @NgModule({
   declarations: [AppComponent, TestingComponent],
@@ -22,7 +24,9 @@ import { ReactiveFormsModule, FormsModule } from "@angular/forms";
     DropDownsModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    LayoutModule,
+    PanelBarModule
   ],
   providers: [TestingService, MainService],
   bootstrap: [AppComponent]
