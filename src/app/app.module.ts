@@ -13,6 +13,8 @@ import { TestingService } from "./services/testing.service";
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { LayoutModule } from "@progress/kendo-angular-layout";
 import { PanelBarModule } from "@progress/kendo-angular-layout";
+import { TooltipModule } from '@progress/kendo-angular-tooltip';
+
 
 @NgModule({
   declarations: [AppComponent, TestingComponent],
@@ -26,7 +28,8 @@ import { PanelBarModule } from "@progress/kendo-angular-layout";
     FormsModule,
     ReactiveFormsModule,
     LayoutModule,
-    PanelBarModule
+    PanelBarModule,
+    TooltipModule
   ],
   providers: [TestingService, MainService],
   bootstrap: [AppComponent]
