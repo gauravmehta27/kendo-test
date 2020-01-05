@@ -7,15 +7,22 @@
   </kendo-dropdownlist>
   <kendo-dropdownlist [data]="data" formControlName="dropdown2">
   </kendo-dropdownlist>
-  <input type="text" formControlName="text" />
+  <input type="text" formControlName="text"  />
   <div *ngIf="showErrors && form?.controls?.text?.invalid" class="errorMessage">
     error
   </div>
   <input type="submit" value="submit" />
 </form>
 
-<div [class.red]="isRed" (click)="isTextClicked()">{{ testVariable }}</div>
+<div [class.red]="isRed" [class.green]="!isRed" (click)="isTextClicked()">{{ testVariable }}</div>
 {{ simpleVariable }}
+
+<div [class.red]="clickedIndex==0" [class.green]="clickedIndex!=0" (click)="isDivClicked(0)">{{ testVariable }}</div>
+<div [class.red]="clickedIndex==1" [class.green]="clickedIndex!=1" (click)="isDivClicked(1)">{{ testVariable }}</div>
+<div [class.red]="clickedIndex==2" [class.green]="clickedIndex!=2" (click)="isDivClicked(2)">{{ testVariable }}</div>
+<div [class.red]="clickedIndex==3" [class.green]="clickedIndex!=3" (click)="isDivClicked(3)">{{ testVariable }}</div>
+<div [class.red]="clickedIndex==4" [class.green]="clickedIndex!=4" (click)="isDivClicked(4)">{{ testVariable }}</div>
+
 
 <div class="panelbar-wrapper">
   <kendo-panelbar>

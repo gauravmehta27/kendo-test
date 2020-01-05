@@ -23,6 +23,8 @@ export class TestingComponent implements OnInit {
   testVariable: string;
   simpleVariable: any;
   isRed: boolean;
+  isDashboardOpen : any;
+  clickedIndex:any;
 
   private imageUrl(imageName: string): string {
     return this.baseImageUrl + imageName + ".jpg";
@@ -33,10 +35,14 @@ export class TestingComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    //this.isDashboardOpen=[false,false,false,false,false];
+    this.clickedIndex=null;
+
     this.isRed = false;
     this.testingService.testVar$.subscribe(res => {
       this.testVariable = res;
     });
+
     this.simpleVariable = this.testingService.simpleVar;
     this.form = this.formBuilder.group({
       dropdown1: ["", Validators.compose([Validators.required])],
@@ -44,16 +50,18 @@ export class TestingComponent implements OnInit {
       text: ["", [Validators.required]]
     });
     this.data = [];
-    this.testingService.getDropdown().subscribe((res: any) => {
-      this.data = res.dropdown1;
-    });
+    // this.testingService.getDropdown().subscribe((res: any) => {
+    //   this.data = res.dropdown1;
+    // });
     this.showErrors = false;
     this.testingService.getData().subscribe((res: any) => {
       this.form.patchValue({
         dropdown1: "",
         dropdown2: "",
-        text: ""
+        text: res[0].title
       });
+      this.data = res.map(instance => instance.title);
+      console.log(this.data);
     });
   }
 
@@ -67,6 +75,12 @@ export class TestingComponent implements OnInit {
   }
 
   isTextClicked() {
-    this.isRed = true;
+    this.isRed = !this.isRed;
+  }
+
+  isDivClicked(index)
+  {
+    //this.isDashboardOpen[index]=!this.isDashboardOpen[index]
+    this.clickedIndex= index;
   }
 }

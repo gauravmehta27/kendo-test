@@ -8,6 +8,6 @@ import { Component } from "@angular/core";
 export class AppComponent {
   title = "kendo-test";
   constructor() {
-    sessionStorage.setItem("dummy", "hello world");
+    sessionStorage.setItem("dummy", "hello world"); // HERE WE CAN GIVE ENTERPRISE ID AND MAINTAIN IT (IN LOGIN SERVICE)
   }
 }

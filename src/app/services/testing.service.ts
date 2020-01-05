@@ -15,13 +15,14 @@ export class TestingService {
   }
   private testVar = new BehaviorSubject("");
   testVar$ = this.testVar.asObservable();
+
   getDropdown() {
     return this.mainService.getFileResp("/assets/data/data.json");
   }
 
   //function to get data from server via get call
   getData() {
-    return this.mainService.getAll("endpoint-url");
+    return this.mainService.getAll("posts");
   }
 
   //function to create data via post call
